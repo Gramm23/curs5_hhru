@@ -1,7 +1,16 @@
 import requests
 
 
-def get_data_employees(data):
+def get_data_employees(data: list) -> list[dict]:
+    """
+    Получает данные о компаниях (работодателях) по их идентификаторам.
+
+    :param data: Список идентификаторов работодателей (employer_id).
+    :type data: list[int]
+
+    :return: Список словарей с данными о компаниях.
+    :rtype: list[dict]
+    """
     data_list = []
     for employer_id in data:
         url = f'https://api.hh.ru/employers/{employer_id}'
@@ -14,7 +23,16 @@ def get_data_employees(data):
     return data_list
 
 
-def get_vacancies_employer(data_id):
+def get_vacancies_employer(data_id) -> list[dict]:
+    """
+    Получает данные о вакансиях, связанных с работодателями по их идентификаторам.
+
+    :param data_id: Список идентификаторов работодателей (employer_id).
+    :type data_id: list[int]
+
+    :return: Список словарей с данными о вакансиях.
+    :rtype: list[dict]
+    """
     data_list = []
     for employer_id in data_id:
         params = {
